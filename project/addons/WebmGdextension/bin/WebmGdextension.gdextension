@@ -1,0 +1,52 @@
+[configuration]
+
+entry_symbol = "webm_gdextension_init"
+compatibility_minimum = "4.5"
+reloadable = false
+
+[icons]
+VideoStreamWebm = "res://addons/WebmGdextension/icons/VideoStreamWebm.svg"
+
+[libraries]
+; Relative paths ensure that our GDExtension can be placed anywhere in the project directory.
+linux.x86_64.single.debug = "./linux/libWebmGdextension.linux.template_debug.x86_64.so"
+linux.x86_64.single.release = "./linux/libWebmGdextension.linux.template_release.x86_64.so"
+
+linux.x86_32.single.debug = "./linux/libWebmGdextension.linux.template_debug.x86_32.so"
+linux.x86_32.single.release = "./linux/libWebmGdextension.linux.template_release.x86_32.so"
+
+linux.arm64.single.debug = "./linux/libWebmGdextension.linux.template_debug.arm64.so"
+linux.arm64.single.release = "./linux/libWebmGdextension.linux.template_release.arm64.so"
+
+linux.arm32.single.debug = "./linux/libWebmGdextension.linux.template_debug.arm32.so"
+linux.arm32.single.release = "./linux/libWebmGdextension.linux.template_release.arm32.so"
+
+windows.x86_64.single.debug = "./windows/WebmGdextension.windows.template_debug.x86_64.dll"
+windows.x86_64.single.release = "./windows/WebmGdextension.windows.template_release.x86_64.dll"
+
+windows.x86_32.single.debug = "./windows/WebmGdextension.windows.template_debug.x86_32.dll"
+windows.x86_32.single.release = "./windows/WebmGdextension.windows.template_release.x86_32.dll"
+
+windows.arm64.single.debug = "./windows/WebmGdextension.windows.template_debug.arm64.dll"
+windows.arm64.single.release = "./windows/WebmGdextension.windows.template_release.arm64.dll"
+
+macos.single.debug = "./macos/libWebmGdextension.macos.template_debug.dylib"
+macos.single.release = "./macos/libWebmGdextension.macos.template_release.dylib"
+
+android.x86_64.single.debug = "./android/libWebmGdextension.android.template_debug.x86_64.so"
+android.x86_64.single.release = "./android/libWebmGdextension.android.template_release.x86_64.so"
+
+android.x86_32.single.debug = "./android/libWebmGdextension.android.template_debug.x86_32.so"
+android.x86_32.single.release = "./android/libWebmGdextension.android.template_release.x86_32.so"
+
+android.arm64.single.debug = "./android/libWebmGdextension.android.template_debug.arm64.so"
+android.arm64.single.release = "./android/libWebmGdextension.android.template_release.arm64.so"
+
+android.arm32.single.debug = "./android/libWebmGdextension.android.template_debug.arm32.so"
+android.arm32.single.release = "./android/libWebmGdextension.android.template_release.arm32.so"
+
+ios.arm64.single.debug = "./ios/libWebmGdextension.ios.template_debug.arm64.dylib"
+ios.arm64.single.release = "./ios/libWebmGdextension.ios.template_release.arm64.dylib"
+
+web.wasm32.single.debug = "./web/libWebmGdextension.web.template_debug.wasm32.wasm"
+web.wasm32.single.release = "./web/libWebmGdextension.web.template_release.wasm32.wasm"

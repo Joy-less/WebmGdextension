@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="VideoStreamPlaybackWebm" inherits="VideoStreamPlayback" api_type="core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+		Playback class used for [VideoStreamWebm].
+	</brief_description>
+	<description>
+		Playback component of [VideoStreamWebm].
+	</description>
+	<tutorials>
+	</tutorials>
+</class>

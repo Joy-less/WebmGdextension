@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dh0oj81pufivs"]
+
+[ext_resource type="Script" uid="uid://bkoygct3hapj8" path="res://example.gd" id="1_jdh55"]
+
+[node name="Node" type="Node" unique_id=702916505]
+script = ExtResource("1_jdh55")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1942963264]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand = true
+loop = true
