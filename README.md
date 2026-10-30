@@ -17,9 +17,9 @@ The supported audio codecs are Opus and Vorbis.
 ## Features
 
 - Import `.webm` files in the editor.
-- Play the `.webm` files in the editor inspector.
 - Load `.webm` files at runtime.
 - Play `.webm` files at runtime.
+- Seek `.webm` files at runtime.
 
 ## How to Use
 
