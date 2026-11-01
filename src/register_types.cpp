@@ -5,7 +5,6 @@
 #include "godot_cpp/core/defs.hpp"
 #include "godot_cpp/godot.hpp"
 #include "godot_cpp/classes/resource_loader.hpp"
-#include "godot_cpp/classes/resource_saver.hpp"
 
 #include "video_stream_webm.h"
 #include "resource_format_loader_webm.h"

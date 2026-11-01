@@ -2,7 +2,6 @@
 
 #include "godot_cpp/classes/project_settings.hpp"
 #include "godot_cpp/classes/file_access.hpp"
-#include "godot_cpp/classes/class_db_singleton.hpp"
 #include "godot_cpp/classes/os.hpp"
 #include "godot_cpp/classes/audio_server.hpp"
 

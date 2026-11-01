@@ -1,5 +1,14 @@
 {
     "enabled_classes": [
-        "ResourceLoader"
+        "AudioServer",
+        "FileAccess",
+        "ImageTexture",
+        "OS",
+        "ProjectSettings",
+        "ResourceFormatLoader",
+        "ResourceLoader",
+        "ResourceUID",
+        "VideoStream",
+        "VideoStreamPlayback"
     ]
 }
