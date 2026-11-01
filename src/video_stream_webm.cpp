@@ -83,8 +83,8 @@ bool webm_gdextension::VideoStreamPlaybackWebm::set_file(const String &p_file) {
 		} break;
 	}
 
-	frame_data.resize((webm->getWidth() * webm->getHeight()) * 8);
-	Ref<Image> img = Image::create_empty(webm->getWidth(), webm->getHeight(), false, Image::FORMAT_RGBAH);
+	frame_data.resize((webm->getWidth() * webm->getHeight()) << 2);
+	Ref<Image> img = Image::create_empty(webm->getWidth(), webm->getHeight(), false, Image::FORMAT_RGBA8);
 	texture->set_image(img);
 
 	return true;
@@ -259,18 +259,18 @@ void webm_gdextension::VideoStreamPlaybackWebm::_update(double p_delta) {
 
 						if (image.chromaShiftW == 0 && image.chromaShiftH == 0 && image.cs == VPX_CS_SRGB) { // sRGB format.
 							if (image.bitDepth > 8) { // sRGB HDR (10-bit or 12-bit) format.
-								uint16_t *wp = reinterpret_cast<uint16_t *>(frame_data.ptrw());
-								const uint16_t *rRow = reinterpret_cast<const uint16_t *>(image.planes[2]);
-								const uint16_t *gRow = reinterpret_cast<const uint16_t *>(image.planes[0]);
-								const uint16_t *bRow = reinterpret_cast<const uint16_t *>(image.planes[1]);
+								uint8_t *wp = frame_data.ptrw();
+								const uint16_t *rRow = reinterpret_cast<uint16_t *>(image.planes[2]);
+								const uint16_t *gRow = reinterpret_cast<uint16_t *>(image.planes[0]);
+								const uint16_t *bRow = reinterpret_cast<uint16_t *>(image.planes[1]);
 								const unsigned char *aRow = image.alpha;
-								float max_value = Math::pow(2, (float)image.bitDepth) - 1;
 								for (int y = 0; y < image.h; y++) {
 									for (int x = 0; x < image.w; x++) {
-										*wp++ = Math::make_half_float(rRow[x] / max_value);
-										*wp++ = Math::make_half_float(gRow[x] / max_value);
-										*wp++ = Math::make_half_float(bRow[x] / max_value);
-										*wp++ = Math::make_half_float(aRow ? (aRow[x] / 255.0f) : 1.0f);
+										int shift = image.bitDepth - 8;
+										*wp++ = rRow[x] >> shift;
+										*wp++ = gRow[x] >> shift;
+										*wp++ = bRow[x] >> shift;
+										*wp++ = aRow ? aRow[x] : 255;
 									}
 									rRow += image.linesize[2] / 2;
 									gRow += image.linesize[0] / 2;
@@ -345,7 +345,7 @@ void webm_gdextension::VideoStreamPlaybackWebm::_update(double p_delta) {
 						}
 
 						if (converted) {
-							Ref<Image> img = Image::create_from_data(image.w, image.h, false, Image::FORMAT_RGBAH, frame_data); // Zero-copy image creation.
+							Ref<Image> img = Image::create_from_data(image.w, image.h, false, Image::FORMAT_RGBA8, frame_data); // Zero-copy image creation.
 							texture->update(img); // Zero-copy send to rendering server.
 
 							video_frame_done = true;
