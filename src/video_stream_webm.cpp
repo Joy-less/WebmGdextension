@@ -258,39 +258,75 @@ void webm_gdextension::VideoStreamPlaybackWebm::_update(double p_delta) {
 						bool converted = false;
 
 						if (image.chromaShiftW == 0 && image.chromaShiftH == 0 && image.cs == VPX_CS_SRGB) { // sRGB format.
-							uint8_t *wp = frame_data.ptrw();
-							const unsigned char *rRow = image.planes[2];
-							const unsigned char *gRow = image.planes[0];
-							const unsigned char *bRow = image.planes[1];
-							const unsigned char *aRow = image.alpha;
-							for (int y = 0; y < image.h; y++) {
-								for (int x = 0; x < image.w; x++) {
-									*wp++ = rRow[x];
-									*wp++ = gRow[x];
-									*wp++ = bRow[x];
-									*wp++ = aRow ? aRow[x] : 255;
+							if (image.bitDepth > 8) { // sRGB HDR (10-bit or 12-bit) format.
+								uint8_t *wp = frame_data.ptrw();
+								const uint16_t *rRow = reinterpret_cast<uint16_t *>(image.planes[2]);
+								const uint16_t *gRow = reinterpret_cast<uint16_t *>(image.planes[0]);
+								const uint16_t *bRow = reinterpret_cast<uint16_t *>(image.planes[1]);
+								const unsigned char *aRow = image.alpha;
+								for (int y = 0; y < image.h; y++) {
+									for (int x = 0; x < image.w; x++) {
+										int shift = image.bitDepth - 8;
+										*wp++ = rRow[x] >> shift;
+										*wp++ = gRow[x] >> shift;
+										*wp++ = bRow[x] >> shift;
+										*wp++ = aRow ? aRow[x] : 255;
+									}
+									rRow += image.linesize[2] / 2;
+									gRow += image.linesize[0] / 2;
+									bRow += image.linesize[1] / 2;
+									if (aRow) {
+										aRow += image.alphaLinesize;
+									}
 								}
-								rRow += image.linesize[2];
-								gRow += image.linesize[0];
-								bRow += image.linesize[1];
-								if (aRow) {
-									aRow += image.alphaLinesize;
+								converted = true;
+							} else { // sRGB SDR (8-bit) format.
+								uint8_t *wp = frame_data.ptrw();
+								const unsigned char *rRow = image.planes[2];
+								const unsigned char *gRow = image.planes[0];
+								const unsigned char *bRow = image.planes[1];
+								const unsigned char *aRow = image.alpha;
+								for (int y = 0; y < image.h; y++) {
+									for (int x = 0; x < image.w; x++) {
+										*wp++ = rRow[x];
+										*wp++ = gRow[x];
+										*wp++ = bRow[x];
+										*wp++ = aRow ? aRow[x] : 255;
+									}
+									rRow += image.linesize[2];
+									gRow += image.linesize[0];
+									bRow += image.linesize[1];
+									if (aRow) {
+										aRow += image.alphaLinesize;
+									}
 								}
+								converted = true;
 							}
-							converted = true;
 						} else { // YUV format.
 							if (image.chromaShiftW == 1 && image.chromaShiftH == 1) { // YUV 420 format.
-								uint8_t *wp = frame_data.ptrw();
-								yuv420_2_rgb8888(wp, image.planes[0], image.planes[1], image.planes[2], image.w, image.h, image.linesize[0], image.linesize[1], image.w << 2);
-								converted = true;
+								if (image.bitDepth > 8) {
+									// HDR is not supported by yuv2rgb.h, so discard the frame.
+								} else {
+									uint8_t *wp = frame_data.ptrw();
+									yuv420_2_rgb8888(wp, image.planes[0], image.planes[1], image.planes[2], image.w, image.h, image.linesize[0], image.linesize[1], image.w << 2);
+									converted = true;
+								}
 							} else if (image.chromaShiftW == 1 && image.chromaShiftH == 0) { // YUV 422 format.
-								uint8_t *wp = frame_data.ptrw();
-								yuv422_2_rgb8888(wp, image.planes[0], image.planes[1], image.planes[2], image.w, image.h, image.linesize[0], image.linesize[1], image.w << 2);
-								converted = true;
+								if (image.bitDepth > 8) {
+									// HDR is not supported by yuv2rgb.h, so discard the frame.
+								} else {
+									uint8_t *wp = frame_data.ptrw();
+									yuv422_2_rgb8888(wp, image.planes[0], image.planes[1], image.planes[2], image.w, image.h, image.linesize[0], image.linesize[1], image.w << 2);
+									converted = true;
+								}
 							} else if (image.chromaShiftW == 0 && image.chromaShiftH == 0) { // YUV 444 format.
-								uint8_t *wp = frame_data.ptrw();
-								yuv444_2_rgb8888(wp, image.planes[0], image.planes[1], image.planes[2], image.w, image.h, image.linesize[0], image.linesize[1], image.w << 2);
-								converted = true;
+								if (image.bitDepth > 8) {
+									// HDR is not supported by yuv2rgb.h, so discard the frame.
+								} else {
+									uint8_t *wp = frame_data.ptrw();
+									yuv444_2_rgb8888(wp, image.planes[0], image.planes[1], image.planes[2], image.w, image.h, image.linesize[0], image.linesize[1], image.w << 2);
+									converted = true;
+								}
 							} else if (image.chromaShiftW == 2 && image.chromaShiftH == 0) { // YUV 411 format.
 								// This format is rare and thus unsupported by yuv2rgb.h, so discard the frame.
 							}
