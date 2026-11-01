@@ -26,6 +26,15 @@ void vp9_iht4x4_16_add_c(const tran_low_t *input, uint8_t *dest, int dest_stride
 void vp9_iht8x8_64_add_c(const tran_low_t *input, uint8_t *dest, int dest_stride, int tx_type);
 #define vp9_iht8x8_64_add vp9_iht8x8_64_add_c
 
+void vp9_highbd_iht16x16_256_add_c(const tran_low_t *input, uint16_t *output, int pitch, int tx_type, int bd);
+#define vp9_highbd_iht16x16_256_add vp9_highbd_iht16x16_256_add_c
+
+void vp9_highbd_iht4x4_16_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int tx_type, int bd);
+#define vp9_highbd_iht4x4_16_add vp9_highbd_iht4x4_16_add_c
+
+void vp9_highbd_iht8x8_64_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int tx_type, int bd);
+#define vp9_highbd_iht8x8_64_add vp9_highbd_iht8x8_64_add_c
+
 void vp9_rtcd(void);
 
 #ifdef RTCD_C

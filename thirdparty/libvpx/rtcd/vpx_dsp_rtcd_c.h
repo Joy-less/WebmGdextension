@@ -356,6 +356,339 @@ void vpx_lpf_horizontal_16_c(uint8_t *s, int pitch, const uint8_t *blimit, const
 
 void vpx_dsp_rtcd(void);
 
+void vpx_highbd_convolve8_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_convolve8 vpx_highbd_convolve8_c
+
+void vpx_highbd_convolve8_avg_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_convolve8_avg vpx_highbd_convolve8_avg_c
+
+void vpx_highbd_convolve8_avg_horiz_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_convolve8_avg_horiz vpx_highbd_convolve8_avg_horiz_c
+
+void vpx_highbd_convolve8_avg_vert_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_convolve8_avg_vert vpx_highbd_convolve8_avg_vert_c
+
+void vpx_highbd_convolve8_horiz_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_convolve8_horiz vpx_highbd_convolve8_horiz_c
+
+void vpx_highbd_convolve8_vert_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_convolve8_vert vpx_highbd_convolve8_vert_c
+
+void vpx_highbd_convolve_avg_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_convolve_avg vpx_highbd_convolve_avg_c
+
+void vpx_highbd_convolve_copy_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_convolve_copy vpx_highbd_convolve_copy_c
+
+void vpx_highbd_d117_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d117_predictor_16x16 vpx_highbd_d117_predictor_16x16_c
+
+void vpx_highbd_d117_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d117_predictor_32x32 vpx_highbd_d117_predictor_32x32_c
+
+void vpx_highbd_d117_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d117_predictor_4x4 vpx_highbd_d117_predictor_4x4_c
+
+void vpx_highbd_d117_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d117_predictor_8x8 vpx_highbd_d117_predictor_8x8_c
+
+void vpx_highbd_d135_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d135_predictor_16x16 vpx_highbd_d135_predictor_16x16_c
+
+void vpx_highbd_d135_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d135_predictor_32x32 vpx_highbd_d135_predictor_32x32_c
+
+void vpx_highbd_d135_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d135_predictor_4x4 vpx_highbd_d135_predictor_4x4_c
+
+void vpx_highbd_d135_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d135_predictor_8x8 vpx_highbd_d135_predictor_8x8_c
+
+void vpx_highbd_d153_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d153_predictor_16x16 vpx_highbd_d153_predictor_16x16_c
+
+void vpx_highbd_d153_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d153_predictor_32x32 vpx_highbd_d153_predictor_32x32_c
+
+void vpx_highbd_d153_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d153_predictor_4x4 vpx_highbd_d153_predictor_4x4_c
+
+void vpx_highbd_d153_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d153_predictor_8x8 vpx_highbd_d153_predictor_8x8_c
+
+void vpx_highbd_d207_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d207_predictor_16x16 vpx_highbd_d207_predictor_16x16_c
+
+void vpx_highbd_d207_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d207_predictor_32x32 vpx_highbd_d207_predictor_32x32_c
+
+void vpx_highbd_d207_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d207_predictor_4x4 vpx_highbd_d207_predictor_4x4_c
+
+void vpx_highbd_d207_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d207_predictor_8x8 vpx_highbd_d207_predictor_8x8_c
+
+void vpx_highbd_d207e_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d207e_predictor_16x16 vpx_highbd_d207e_predictor_16x16_c
+
+void vpx_highbd_d207e_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d207e_predictor_32x32 vpx_highbd_d207e_predictor_32x32_c
+
+void vpx_highbd_d207e_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d207e_predictor_4x4 vpx_highbd_d207e_predictor_4x4_c
+
+void vpx_highbd_d207e_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d207e_predictor_8x8 vpx_highbd_d207e_predictor_8x8_c
+
+void vpx_highbd_d45_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d45_predictor_16x16 vpx_highbd_d45_predictor_16x16_c
+
+void vpx_highbd_d45_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d45_predictor_32x32 vpx_highbd_d45_predictor_32x32_c
+
+void vpx_highbd_d45_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d45_predictor_4x4 vpx_highbd_d45_predictor_4x4_c
+
+void vpx_highbd_d45_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d45_predictor_8x8 vpx_highbd_d45_predictor_8x8_c
+
+void vpx_highbd_d45e_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d45e_predictor_16x16 vpx_highbd_d45e_predictor_16x16_c
+
+void vpx_highbd_d45e_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d45e_predictor_32x32 vpx_highbd_d45e_predictor_32x32_c
+
+void vpx_highbd_d45e_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d45e_predictor_4x4 vpx_highbd_d45e_predictor_4x4_c
+
+void vpx_highbd_d45e_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d45e_predictor_8x8 vpx_highbd_d45e_predictor_8x8_c
+
+void vpx_highbd_d63_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d63_predictor_16x16 vpx_highbd_d63_predictor_16x16_c
+
+void vpx_highbd_d63_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d63_predictor_32x32 vpx_highbd_d63_predictor_32x32_c
+
+void vpx_highbd_d63_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d63_predictor_4x4 vpx_highbd_d63_predictor_4x4_c
+
+void vpx_highbd_d63_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d63_predictor_8x8 vpx_highbd_d63_predictor_8x8_c
+
+void vpx_highbd_d63e_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d63e_predictor_16x16 vpx_highbd_d63e_predictor_16x16_c
+
+void vpx_highbd_d63e_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d63e_predictor_32x32 vpx_highbd_d63e_predictor_32x32_c
+
+void vpx_highbd_d63e_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d63e_predictor_4x4 vpx_highbd_d63e_predictor_4x4_c
+
+void vpx_highbd_d63e_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d63e_predictor_8x8 vpx_highbd_d63e_predictor_8x8_c
+
+void vpx_highbd_d63f_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_d63f_predictor_4x4 vpx_highbd_d63f_predictor_4x4_c
+
+void vpx_highbd_dc_128_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_128_predictor_16x16 vpx_highbd_dc_128_predictor_16x16_c
+
+void vpx_highbd_dc_128_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_128_predictor_32x32 vpx_highbd_dc_128_predictor_32x32_c
+
+void vpx_highbd_dc_128_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_128_predictor_4x4 vpx_highbd_dc_128_predictor_4x4_c
+
+void vpx_highbd_dc_128_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_128_predictor_8x8 vpx_highbd_dc_128_predictor_8x8_c
+
+void vpx_highbd_dc_left_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_left_predictor_16x16 vpx_highbd_dc_left_predictor_16x16_c
+
+void vpx_highbd_dc_left_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_left_predictor_32x32 vpx_highbd_dc_left_predictor_32x32_c
+
+void vpx_highbd_dc_left_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_left_predictor_4x4 vpx_highbd_dc_left_predictor_4x4_c
+
+void vpx_highbd_dc_left_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_left_predictor_8x8 vpx_highbd_dc_left_predictor_8x8_c
+
+void vpx_highbd_dc_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_predictor_16x16 vpx_highbd_dc_predictor_16x16_c
+
+void vpx_highbd_dc_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_predictor_32x32 vpx_highbd_dc_predictor_32x32_c
+
+void vpx_highbd_dc_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_predictor_4x4 vpx_highbd_dc_predictor_4x4_c
+
+void vpx_highbd_dc_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_predictor_8x8 vpx_highbd_dc_predictor_8x8_c
+
+void vpx_highbd_dc_top_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_top_predictor_16x16 vpx_highbd_dc_top_predictor_16x16_c
+
+void vpx_highbd_dc_top_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_top_predictor_32x32 vpx_highbd_dc_top_predictor_32x32_c
+
+void vpx_highbd_dc_top_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_top_predictor_4x4 vpx_highbd_dc_top_predictor_4x4_c
+
+void vpx_highbd_dc_top_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_dc_top_predictor_8x8 vpx_highbd_dc_top_predictor_8x8_c
+
+void vpx_highbd_h_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_h_predictor_16x16 vpx_highbd_h_predictor_16x16_c
+
+void vpx_highbd_h_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_h_predictor_32x32 vpx_highbd_h_predictor_32x32_c
+
+void vpx_highbd_h_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_h_predictor_4x4 vpx_highbd_h_predictor_4x4_c
+
+void vpx_highbd_h_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_h_predictor_8x8 vpx_highbd_h_predictor_8x8_c
+
+void vpx_highbd_he_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_he_predictor_4x4 vpx_highbd_he_predictor_4x4_c
+
+void vpx_highbd_idct16x16_10_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_idct16x16_10_add vpx_highbd_idct16x16_10_add_c
+
+void vpx_highbd_idct16x16_1_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_idct16x16_1_add vpx_highbd_idct16x16_1_add_c
+
+void vpx_highbd_idct16x16_256_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_idct16x16_256_add vpx_highbd_idct16x16_256_add_c
+
+void vpx_highbd_idct32x32_1024_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_idct32x32_1024_add vpx_highbd_idct32x32_1024_add_c
+
+void vpx_highbd_idct32x32_135_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_idct32x32_135_add vpx_highbd_idct32x32_135_add_c
+
+void vpx_highbd_idct32x32_1_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_idct32x32_1_add vpx_highbd_idct32x32_1_add_c
+
+void vpx_highbd_idct32x32_34_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_idct32x32_34_add vpx_highbd_idct32x32_34_add_c
+
+void vpx_highbd_idct4x4_16_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_idct4x4_16_add vpx_highbd_idct4x4_16_add_c
+
+void vpx_highbd_idct4x4_1_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_idct4x4_1_add vpx_highbd_idct4x4_1_add_c
+
+void vpx_highbd_idct8x8_12_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_idct8x8_12_add vpx_highbd_idct8x8_12_add_c
+
+void vpx_highbd_idct8x8_1_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_idct8x8_1_add vpx_highbd_idct8x8_1_add_c
+
+void vpx_highbd_idct8x8_64_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_idct8x8_64_add vpx_highbd_idct8x8_64_add_c
+
+void vpx_highbd_iwht4x4_16_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_iwht4x4_16_add vpx_highbd_iwht4x4_16_add_c
+
+void vpx_highbd_iwht4x4_1_add_c(const tran_low_t *input, uint16_t *dest, int dest_stride, int bd);
+#define vpx_highbd_iwht4x4_1_add vpx_highbd_iwht4x4_1_add_c
+
+void vpx_highbd_lpf_horizontal_4_c(uint16_t *s, int pitch, const uint8_t *blimit, const uint8_t *limit, const uint8_t *thresh, int bd);
+#define vpx_highbd_lpf_horizontal_4 vpx_highbd_lpf_horizontal_4_c
+
+void vpx_highbd_lpf_horizontal_4_dual_c(uint16_t *s, int pitch, const uint8_t *blimit0, const uint8_t *limit0, const uint8_t *thresh0, const uint8_t *blimit1, const uint8_t *limit1, const uint8_t *thresh1, int bd);
+#define vpx_highbd_lpf_horizontal_4_dual vpx_highbd_lpf_horizontal_4_dual_c
+
+void vpx_highbd_lpf_horizontal_8_c(uint16_t *s, int pitch, const uint8_t *blimit, const uint8_t *limit, const uint8_t *thresh, int bd);
+#define vpx_highbd_lpf_horizontal_8 vpx_highbd_lpf_horizontal_8_c
+
+void vpx_highbd_lpf_horizontal_8_dual_c(uint16_t *s, int pitch, const uint8_t *blimit0, const uint8_t *limit0, const uint8_t *thresh0, const uint8_t *blimit1, const uint8_t *limit1, const uint8_t *thresh1, int bd);
+#define vpx_highbd_lpf_horizontal_8_dual vpx_highbd_lpf_horizontal_8_dual_c
+
+void vpx_highbd_lpf_horizontal_edge_16_c(uint16_t *s, int pitch, const uint8_t *blimit, const uint8_t *limit, const uint8_t *thresh, int bd);
+#define vpx_highbd_lpf_horizontal_edge_16 vpx_highbd_lpf_horizontal_edge_16_c
+
+void vpx_highbd_lpf_horizontal_edge_8_c(uint16_t *s, int pitch, const uint8_t *blimit, const uint8_t *limit, const uint8_t *thresh, int bd);
+#define vpx_highbd_lpf_horizontal_edge_8 vpx_highbd_lpf_horizontal_edge_8_c
+
+void vpx_highbd_lpf_vertical_16_c(uint16_t *s, int pitch, const uint8_t *blimit, const uint8_t *limit, const uint8_t *thresh, int bd);
+#define vpx_highbd_lpf_vertical_16 vpx_highbd_lpf_vertical_16_c
+
+void vpx_highbd_lpf_vertical_16_dual_c(uint16_t *s, int pitch, const uint8_t *blimit, const uint8_t *limit, const uint8_t *thresh, int bd);
+#define vpx_highbd_lpf_vertical_16_dual vpx_highbd_lpf_vertical_16_dual_c
+
+void vpx_highbd_lpf_vertical_4_c(uint16_t *s, int pitch, const uint8_t *blimit, const uint8_t *limit, const uint8_t *thresh, int bd);
+#define vpx_highbd_lpf_vertical_4 vpx_highbd_lpf_vertical_4_c
+
+void vpx_highbd_lpf_vertical_4_dual_c(uint16_t *s, int pitch, const uint8_t *blimit0, const uint8_t *limit0, const uint8_t *thresh0, const uint8_t *blimit1, const uint8_t *limit1, const uint8_t *thresh1, int bd);
+#define vpx_highbd_lpf_vertical_4_dual vpx_highbd_lpf_vertical_4_dual_c
+
+void vpx_highbd_lpf_vertical_8_c(uint16_t *s, int pitch, const uint8_t *blimit, const uint8_t *limit, const uint8_t *thresh, int bd);
+#define vpx_highbd_lpf_vertical_8 vpx_highbd_lpf_vertical_8_c
+
+void vpx_highbd_lpf_vertical_8_dual_c(uint16_t *s, int pitch, const uint8_t *blimit0, const uint8_t *limit0, const uint8_t *thresh0, const uint8_t *blimit1, const uint8_t *limit1, const uint8_t *thresh1, int bd);
+#define vpx_highbd_lpf_vertical_8_dual vpx_highbd_lpf_vertical_8_dual_c
+
+void vpx_highbd_scaled_2d_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_scaled_2d vpx_highbd_scaled_2d_c
+
+void vpx_highbd_scaled_avg_2d_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_scaled_avg_2d vpx_highbd_scaled_avg_2d_c
+
+void vpx_highbd_scaled_avg_horiz_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_scaled_avg_horiz vpx_highbd_scaled_avg_horiz_c
+
+void vpx_highbd_scaled_avg_vert_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_scaled_avg_vert vpx_highbd_scaled_avg_vert_c
+
+void vpx_highbd_scaled_horiz_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_scaled_horiz vpx_highbd_scaled_horiz_c
+
+void vpx_highbd_scaled_vert_c(const uint16_t *src, ptrdiff_t src_stride, uint16_t *dst, ptrdiff_t dst_stride, const InterpKernel *filter, int x0_q4, int x_step_q4, int y0_q4, int y_step_q4, int w, int h, int bd);
+#define vpx_highbd_scaled_vert vpx_highbd_scaled_vert_c
+
+void vpx_highbd_tm_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_tm_predictor_16x16 vpx_highbd_tm_predictor_16x16_c
+
+void vpx_highbd_tm_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_tm_predictor_32x32 vpx_highbd_tm_predictor_32x32_c
+
+void vpx_highbd_tm_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_tm_predictor_4x4 vpx_highbd_tm_predictor_4x4_c
+
+void vpx_highbd_tm_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_tm_predictor_8x8 vpx_highbd_tm_predictor_8x8_c
+
+void vpx_highbd_v_predictor_16x16_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_v_predictor_16x16 vpx_highbd_v_predictor_16x16_c
+
+void vpx_highbd_v_predictor_32x32_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_v_predictor_32x32 vpx_highbd_v_predictor_32x32_c
+
+void vpx_highbd_v_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_v_predictor_4x4 vpx_highbd_v_predictor_4x4_c
+
+void vpx_highbd_v_predictor_8x8_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_v_predictor_8x8 vpx_highbd_v_predictor_8x8_c
+
+void vpx_highbd_ve_predictor_4x4_c(uint16_t *dst, ptrdiff_t y_stride, const uint16_t *above, const uint16_t *left, int bd);
+#define vpx_highbd_ve_predictor_4x4 vpx_highbd_ve_predictor_4x4_c
+
+void vpx_highbd_yv12_copy_frame_c(const YV12_BUFFER_CONFIG *src_ybc, YV12_BUFFER_CONFIG *dst_ybc, int bd);
+#define vpx_highbd_yv12_copy_frame vpx_highbd_yv12_copy_frame_c
+
+void vpx_highbd_idct16x16_38_add_c(const tran_low_t *input, uint16_t *dest, int stride, int bd);
+#define vpx_highbd_idct16x16_38_add vpx_highbd_idct16x16_38_add_c
+
+void vpx_highbd_lpf_horizontal_16_dual_c(uint16_t *s, int pitch, const uint8_t *blimit, const uint8_t *limit, const uint8_t *thresh, int bd);
+#define vpx_highbd_lpf_horizontal_16_dual vpx_highbd_lpf_horizontal_16_dual_c
+
+void vpx_highbd_lpf_horizontal_16_c(uint16_t *s, int pitch, const uint8_t *blimit, const uint8_t *limit, const uint8_t *thresh, int bd);
+#define vpx_highbd_lpf_horizontal_16 vpx_highbd_lpf_horizontal_16_c
+
 #ifdef RTCD_C
 static void setup_rtcd_internal(void)
 {
