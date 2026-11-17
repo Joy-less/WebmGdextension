@@ -35,7 +35,7 @@ ffmpeg -i input.mp4 -vf "scale=1280x720:flags=lanczos" -c:v libvpx-vp9 -crf 30 -
 
 ## Recommended Quality
 
-See [Google's Recommended Settings](https://developers.google.com/media/vp9/settings/vod?utm_source=chatgpt.com#quality) for the recommended VP9 quality level.
+See [Google's Recommended Settings](https://developers.google.com/media/vp9/settings/vod#quality) for the recommended VP9 quality level.
 
 See [Opus GDExtension](https://github.com/Joy-less/OpusGdextension) for the recommended Opus bitrate.
 
